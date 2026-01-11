@@ -1,0 +1,58 @@
+.card {
+    display: block;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    text-decoration: none;
+    transition: all var(--transition);
+}
+
+.card:hover {
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-3px);
+    border-color: var(--accent-light);
+}
+
+.content {
+    padding: 1.5rem;
+}
+
+.title {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 0.5rem 0;
+    line-height: 1.4;
+}
+
+.arabic {
+    font-family: 'Amiri', 'Traditional Arabic', serif;
+    font-size: 1.25rem;
+    direction: rtl;
+    text-align: right;
+    color: var(--text-primary);
+    line-height: 1.8;
+    padding: 0.75rem;
+    background: var(--bg-secondary);
+    border-radius: var(--radius-sm);
+    margin-bottom: 0.75rem;
+}
+
+.translation {
+    color: var(--text-secondary);
+    font-size: 0.9375rem;
+    line-height: 1.5;
+    margin-bottom: 1rem;
+}
+
+.footer {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+    color: var(--accent-primary);
+    font-weight: 500;
+    padding-top: 0.75rem;
+    border-top: 1px solid var(--border-light);
+}

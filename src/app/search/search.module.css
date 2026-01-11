@@ -1,0 +1,58 @@
+.pageHeader {
+    background: var(--bg-secondary);
+    padding: 3rem 0;
+    margin-bottom: 2rem;
+}
+
+.pageTitle {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.searchQuery {
+    color: var(--accent-primary);
+}
+
+.resultsInfo {
+    color: var(--text-secondary);
+}
+
+.section {
+    margin-bottom: 3rem;
+}
+
+.sectionTitle {
+    font-size: 1.25rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--border-light);
+}
+
+.grid {
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+@media (max-width: 1024px) {
+    .grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 640px) {
+    .grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.emptyState {
+    text-align: center;
+    padding: 4rem;
+    color: var(--text-muted);
+}
+
+.emptyIcon {
+    margin-bottom: 1rem;
+    opacity: 0.5;
+}

@@ -1,0 +1,193 @@
+/* =========================================
+   1. DESKTOP & GLOBAL HEADER STYLES
+   ========================================= */
+
+.header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--bg-primary);
+    border-bottom: 1px solid var(--border-color);
+    backdrop-filter: blur(8px);
+}
+
+.headerContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 70px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    text-decoration: none;
+}
+
+.logoText {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+/* Default Desktop Nav */
+.nav {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.navLink {
+    font-weight: 500;
+    color: var(--text-secondary);
+    transition: color var(--transition);
+    padding: 0.5rem 0;
+}
+
+.navLink:hover {
+    color: var(--accent-primary);
+}
+
+.searchForm {
+    display: flex;
+    align-items: center;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+}
+
+.searchInput {
+    border: none;
+    background: transparent;
+    padding: 0.5rem 0.75rem;
+    width: 180px;
+    color: var(--text-primary);
+    font-size: 0.875rem;
+}
+
+.searchInput:focus {
+    outline: none;
+}
+
+.searchInput::placeholder {
+    color: var(--text-muted);
+}
+
+.searchButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: none;
+    padding: 0.5rem 0.75rem;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: color var(--transition);
+}
+
+.searchButton:hover {
+    color: var(--accent-primary);
+}
+
+.mobileMenuBtn {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: none;
+    color: var(--text-primary);
+    padding: 0.5rem;
+    cursor: pointer;
+}
+
+/* =========================================
+   2. MOBILE DRAWER STYLES (Fixed)
+   ========================================= */
+
+@media (max-width: 768px) {
+    .nav {
+        /* POSITIONS: Fixed to cover the full screen height */
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        left: auto; /* Ensures it stays on the right side */
+        
+        /* DIMENSIONS: Takes up 80% of width, leaving 20% to click and close */
+        width: 80%;
+        max-width: 320px;
+        height: 100vh;
+        
+        /* LAYOUT */
+        flex-direction: column;
+        align-items: flex-start; /* Align text to left */
+        
+        /* COLORS: Matches your theme correctly now */
+        background-color: var(--bg-primary);
+        border-left: 1px solid var(--border-color);
+        
+        /* SPACING: Top padding ensures content isn't cut off by screen edge */
+        padding: 6rem 2rem 2rem 2rem;
+        gap: 1.5rem;
+        
+        /* ANIMATION & VISIBILITY */
+        transform: translateX(100%); /* Hidden by default */
+        z-index: 1000; /* Sits ON TOP of the header */
+        
+        /* Smooth slide + Smooth shadow fade */
+        transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease;
+        
+        /* Initial State: No shadow */
+        box-shadow: none;
+    }
+
+    .navOpen {
+        transform: translateX(0);
+        
+        /* THE DARK OVERLAY TRICK:
+           Instead of a separate div, we cast a massive shadow 
+           to darken the rest of the website */
+        box-shadow: 0 0 0 100vmax rgba(0, 0, 0, 0.6);
+    }
+
+    .navLink {
+        color: var(--text-primary);
+        font-size: 1.25rem;
+        width: 100%;
+        text-align: left;
+        padding: 0.75rem 0;
+        border-bottom: 1px solid var(--border-color);
+    }
+    
+    /* Remove border from the last link for a cleaner look */
+    .navLink:last-of-type {
+        border-bottom: none;
+    }
+
+    .navLink:hover {
+        color: var(--accent-primary);
+        padding-left: 10px; /* Slight slide effect on hover */
+    }
+
+    .searchForm {
+        width: 100%;
+        margin-top: 1rem;
+        background-color: var(--bg-secondary);
+        height: 45px; /* Taller touch target for mobile */
+    }
+
+    .searchInput {
+        width: 100%;
+        flex: 1;
+        font-size: 1rem; /* Prevent zoom on iOS */
+        color: var(--text-primary);
+    }
+
+    .mobileMenuBtn {
+        display: flex;
+        /* Ensure the button stays reachable if you want it to toggle */
+        z-index: 1001; 
+    }
+}

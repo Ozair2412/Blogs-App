@@ -1,0 +1,173 @@
+.footer {
+    background-color: var(--bg-secondary);
+    border-top: 1px solid var(--border-color);
+    padding: 4rem 0 2rem;
+    margin-top: auto;
+}
+
+.grid {
+    display: grid;
+    /* Adjusted columns: Brand gets more space, then Links, then Contact */
+    grid-template-columns: 2fr 1fr 1.5fr; 
+    gap: 3rem;
+    margin-bottom: 3rem;
+}
+
+/* Brand Column */
+.brandCol {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    text-decoration: none;
+    margin-bottom: 1rem;
+}
+
+.description {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    max-width: 300px;
+}
+
+/* Social Icons */
+.socialLinks {
+    display: flex;
+    gap: 1rem;
+}
+
+.socialIcon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background-color: var(--bg-primary);
+    color: var(--text-secondary);
+    border: 1px solid var(--border-color);
+    transition: all 0.2s ease;
+}
+
+.socialIcon:hover {
+    color: var(--accent-primary);
+    border-color: var(--accent-primary);
+    transform: translateY(-2px);
+}
+
+/* Link Columns */
+.colTitle {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 1.25rem;
+}
+
+.linkList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.link {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: color 0.2s ease;
+}
+
+.link:hover {
+    color: var(--accent-primary);
+}
+
+/* Contact Column */
+.contactCol {
+    display: flex;
+    flex-direction: column;
+    /* Default desktop alignment */
+    align-items: flex-start;
+}
+
+.contactItem {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem; /* Increased gap for better spacing */
+    color: var(--text-secondary);
+    background: var(--bg-primary); /* Optional: add background to make it pop */
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+}
+
+.contactIcon {
+    color: var(--accent-primary);
+    flex-shrink: 0; /* Prevent icon from shrinking on small screens */
+}
+
+/* Bottom Bar */
+.bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border-color);
+    color: var(--text-muted);
+    font-size: 0.875rem;
+}
+
+.heartIcon {
+    display: inline-block;
+    color: #ef4444;
+    margin: 0 2px;
+    vertical-align: middle;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .grid {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+        text-align: center;
+    }
+
+    .brandCol, .linksCol, .contactCol {
+        align-items: center;
+    }
+
+    .description {
+        margin: 0 auto 1.5rem auto;
+    }
+    
+    .socialLinks {
+        justify-content: center;
+    }
+
+    /* Fix for Get in Touch alignment on mobile */
+    .contactCol {
+        width: 100%;
+        align-items: center;
+    }
+
+    .contactItem {
+        display: inline-flex; /* Centers naturally with text-align: center parent */
+        justify-content: center;
+        width: auto;
+        max-width: 100%; /* Ensure it doesn't overflow */
+    }
+    
+    /* Fix for Bottom Bar on Mobile */
+    .bottom {
+        flex-direction: column; /* Stack items vertically */
+        gap: 1rem;              /* Add space between them */
+        text-align: center;     /* Center the text */
+    }
+}

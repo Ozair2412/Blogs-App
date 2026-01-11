@@ -1,0 +1,171 @@
+.ayahCard {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 2rem;
+    margin-bottom: 1.5rem;
+    transition: box-shadow 0.3s ease;
+}
+
+.ayahCard:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.surahHeader {
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid var(--accent-primary);
+}
+
+.surahName {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--accent-primary);
+    margin: 0;
+}
+
+/* Ornamental circular ayah number marker */
+.ayahNumber {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 42px;
+    height: 42px;
+    padding: 0 0.3rem;
+    margin-bottom: 1rem;
+    font-size: 0.8125rem;
+    font-weight: 700;
+    color: var(--accent-primary);
+    font-family: 'Inter', -apple-system, sans-serif;
+    position: relative;
+    border: 2.5px solid var(--accent-primary);
+    border-radius: 50%;
+    background: var(--bg-card);
+    box-shadow:
+        0 0 0 1px var(--bg-card),
+        0 0 0 4px var(--accent-primary),
+        0 0 0 5px var(--bg-card);
+}
+
+/* Decorative dots at top and bottom */
+.ayahNumber::before,
+.ayahNumber::after {
+    content: '';
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    background: var(--accent-primary);
+    border-radius: 50%;
+}
+
+.ayahNumber::before {
+    top: -3px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.ayahNumber::after {
+    bottom: -3px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.ayahContent {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.arabicText {
+    font-size: 1.75rem;
+    line-height: 2.2;
+    color: var(--text-primary);
+    direction: rtl;
+    text-align: right;
+    font-family: 'Amiri', 'Traditional Arabic', serif;
+    margin: 0;
+    font-weight: 400;
+}
+
+/* Tajweed color rules for card view - comprehensive set */
+.arabicText :global(.tajweed-heavy) {
+    color: #0077cc;
+    font-weight: 600;
+}
+
+.arabicText :global(.tajweed-light) {
+    color: #888;
+}
+
+.arabicText :global(.tajweed-madd) {
+    color: #9c27b0;
+    font-weight: 500;
+}
+
+.arabicText :global(.tajweed-ghunnah) {
+    color: #4caf50;
+    font-weight: 500;
+}
+
+.arabicText :global(.tajweed-meem) {
+    color: #ff9800;
+}
+
+.arabicText :global(.tajweed-silent) {
+    color: #999;
+}
+
+.arabicText :global(.tajweed-qalqalah) {
+    color: #f44336;
+    font-weight: 500;
+}
+
+.arabicText :global(.tajweed-alif) {
+    color: #e91e63;
+}
+
+.arabicText :global(.tajweed-idgham) {
+    color: #009688;
+    font-weight: 500;
+}
+
+.arabicText :global(.tajweed-raa) {
+    color: #673ab7;
+}
+
+.arabicText :global(.tajweed-waqf) {
+    color: #795548;
+}
+
+.arabicText :global(.tajweed-special) {
+    color: #00bcd4;
+}
+
+.arabicText :global(.tajweed-other) {
+    color: #607d8b;
+}
+
+.translation {
+    font-size: 1.125rem;
+    line-height: 1.8;
+    color: var(--text-secondary);
+    margin: 0;
+    padding-left: 1rem;
+    border-left: 3px solid var(--accent-primary);
+}
+
+@media (max-width: 768px) {
+    .ayahCard {
+        padding: 1.5rem;
+    }
+
+    .arabicText {
+        font-size: 1.5rem;
+        line-height: 2;
+    }
+
+    .translation {
+        font-size: 1rem;
+        padding-left: 0.75rem;
+    }
+}

@@ -1,0 +1,47 @@
+.switcher {
+    display: inline-flex;
+    background: var(--bg-secondary);
+    border-radius: 8px;
+    padding: 4px;
+    gap: 4px;
+    margin-right: 1rem;
+}
+
+.switchButton {
+    padding: 0.625rem 1.5rem;
+    background: transparent;
+    border: none;
+    border-radius: 6px;
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.switchButton:hover {
+    color: var(--text-primary);
+    background: rgba(0, 0, 0, 0.05);
+}
+
+[data-theme="dark"] .switchButton:hover {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.switchButton.active {
+    background: var(--accent-primary);
+    color: white;
+    box-shadow: 0 2px 8px rgba(79, 70, 229, 0.3);
+}
+
+@media (max-width: 768px) {
+    .switcher {
+        margin-right: 0;
+        margin-bottom: 1rem;
+    }
+
+    .switchButton {
+        padding: 0.5rem 1.25rem;
+        font-size: 0.875rem;
+    }
+}

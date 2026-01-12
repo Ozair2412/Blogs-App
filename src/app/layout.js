@@ -7,7 +7,7 @@ import ScrollToTop from '@/components/ScrollToTop';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata = {
-  title: 'Deen Elevate',
+  title: 'Namaz Blogs',
   description: 'Discover beautiful duas and insightful Islamic blog posts',
 };
 

@@ -8,7 +8,7 @@ import { Search, Menu, X } from 'lucide-react';
 import ThemeToggle from './ThemeToggle';
 import styles from './Header.module.css';
 
-export default function Header({ siteTitle = 'Deen Elevate' }) {
+export default function Header({ siteTitle = 'Namaz Blogs' }) {
   const [searchQuery, setSearchQuery] = useState('');
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const router = useRouter();
@@ -42,9 +42,6 @@ export default function Header({ siteTitle = 'Deen Elevate' }) {
           </Link>
           <Link href="/quran" className={styles.navLink} onClick={() => setMobileMenuOpen(false)}>
             Quran
-          </Link>
-          <Link href="/hadith" className={styles.navLink} onClick={() => setMobileMenuOpen(false)}>
-            Hadith
           </Link>
 
           <form onSubmit={handleSearch} className={styles.searchForm}>

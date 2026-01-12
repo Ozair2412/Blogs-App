@@ -37,7 +37,7 @@ export async function generateMetadata({ params }) {
   }
 
   return {
-    title: `${blog.title} - Deen Elevate`,
+    title: `${blog.title} - Namaz Blogs`,
     description: blog.excerpt || blog.content?.substring(0, 160),
   };
 }

@@ -4,6 +4,7 @@ import { supabase } from '@/lib/supabase';
 import BlogCard from '@/components/blog/BlogCard';
 import DuaCard from '@/components/dua/DuaCard';
 import WhatsAppButton from '@/components/WhatsAppButton';
+import HijriCalendar from '@/components/HijriCalendar';
 import styles from './home.module.css';
 
 export const revalidate = 0;
@@ -56,12 +57,15 @@ export default async function HomePage() {
 
       <section className={styles.hero}>
         <div className="container">
-          <h1 className={styles.heroTitle}>
-            {settings.site_title || 'Deen elevate'}
-          </h1>
-          <p className={styles.heroSubtitle}>
-            Discover beautiful duas and insightful Islamic content to enrich your spiritual journey
-          </p>
+          <div className={styles.heroContent}>
+            <HijriCalendar />
+            <h1 className={styles.heroTitle}>
+              {settings.site_title || 'Namaz Blogs'}
+            </h1>
+            <p className={styles.heroSubtitle}>
+              Discover beautiful duas and insightful Islamic content to enrich your spiritual journey
+            </p>
+          </div>
         </div>
       </section>
 

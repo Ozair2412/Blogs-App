@@ -13,13 +13,13 @@ export default function Footer() {
           {/* Column 1: Brand & Description */}
           <div className={styles.brandCol}>
             <Link href="/" className={styles.logo}>
-              Deen Elevate
+              Namaz Blogs
             </Link>
             <p className={styles.description}>
               Discover beautiful duas and insightful Islamic content to enrich your spiritual journey.
             </p>
             <div className={styles.socialLinks}>
-              <a href="https://www.instagram.com/areeb_arfa/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className={styles.socialIcon}>
+              <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className={styles.socialIcon}>
                 <Instagram size={20} />
               </a>
               <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" aria-label="Twitter" className={styles.socialIcon}>
@@ -51,14 +51,14 @@ export default function Footer() {
             <h3 className={styles.colTitle}>Get in Touch</h3>
             <div className={styles.contactItem}>
               <Mail size={20} className={styles.contactIcon} />
-              <a href="mailto:contact@deenelevate.com" className={styles.link}>contact@deenelevate.com</a>
+              <a href="mailto:namazandblogapp@gmail.com" className={styles.link}>namazandblogapp@gmail.com</a>
             </div>
           </div>
         </div>
 
         <div className={styles.bottom}>
           <p className={styles.copyright}>
-            © {currentYear} Deen Elevate. All rights reserved.
+            © {currentYear} Namaz Blogs. All rights reserved.
           </p>
           <p className={styles.madeWith}>
             Made with <Heart size={14} className={styles.heartIcon} /> for the Ummah

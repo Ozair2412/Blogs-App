@@ -83,7 +83,7 @@ export default function SettingsPage() {
               className="form-input"
               value={settings.site_title}
               onChange={(e) => setSettings({ ...settings, site_title: e.target.value })}
-              placeholder="Deen Elevate"
+              placeholder="Namaz Blogs"
             />
           </div>
         </div>

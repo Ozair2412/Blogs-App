@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { Plus, Trash2, FolderOpen } from 'lucide-react';
 import { generateSlug } from '@/lib/utils';
+import Modal from '@/components/ui/Modal';
 import styles from './categories.module.css';
 
 export default function CategoriesPage() {
@@ -10,6 +11,7 @@ export default function CategoriesPage() {
   const [loading, setLoading] = useState(true);
   const [newCategory, setNewCategory] = useState({ name: '', type: 'blog' });
   const [adding, setAdding] = useState(false);
+  const [deleteModal, setDeleteModal] = useState({ isOpen: false, id: null });
 
   useEffect(() => {
     fetchCategories();
@@ -55,8 +57,13 @@ export default function CategoriesPage() {
     }
   }
 
-  async function handleDelete(id) {
-    if (!confirm('Are you sure you want to delete this category?')) return;
+  function confirmDelete(id) {
+    setDeleteModal({ isOpen: true, id });
+  }
+
+  async function handleDelete() {
+    if (!deleteModal.id) return;
+    const id = deleteModal.id;
 
     try {
       const response = await fetch(`/api/categories/${id}`, { method: 'DELETE' });
@@ -118,7 +125,7 @@ export default function CategoriesPage() {
                   </div>
                   <span className={styles.itemName}>{cat.name}</span>
                   <button
-                    onClick={() => handleDelete(cat.id)}
+                    onClick={() => confirmDelete(cat.id)}
                     className={styles.deleteBtn}
                   >
                     <Trash2 size={16} />
@@ -142,7 +149,7 @@ export default function CategoriesPage() {
                   </div>
                   <span className={styles.itemName}>{cat.name}</span>
                   <button
-                    onClick={() => handleDelete(cat.id)}
+                    onClick={() => confirmDelete(cat.id)}
                     className={styles.deleteBtn}
                   >
                     <Trash2 size={16} />
@@ -152,7 +159,18 @@ export default function CategoriesPage() {
             </div>
           )}
         </div>
+
       </div>
+
+      <Modal
+        isOpen={deleteModal.isOpen}
+        onClose={() => setDeleteModal({ isOpen: false, id: null })}
+        onConfirm={handleDelete}
+        title="Delete Category"
+        message="Are you sure you want to delete this category? This action cannot be undone."
+        confirmText="Delete"
+        isDanger={true}
+      />
     </div>
   );
 }

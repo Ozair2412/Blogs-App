@@ -2,13 +2,22 @@ import { NextResponse } from 'next/server';
 import { supabase } from '@/lib/supabase';
 
 // Get all duas
-export async function GET() {
+export async function GET(request) {
   try {
-    const { data, error } = await supabase
+    const { searchParams } = new URL(request.url);
+    const isAdmin = searchParams.get('admin') === 'true';
+
+    let query = supabase
       .from('duas')
       .select('*, category:categories(id, name)')
-      .eq('is_published', true)
       .order('created_at', { ascending: false });
+
+    // Only filter by published if not admin
+    if (!isAdmin) {
+      query = query.eq('is_published', true);
+    }
+
+    const { data, error } = await query;
 
     if (error) throw error;
 
@@ -23,6 +32,7 @@ export async function GET() {
 export async function POST(request) {
   try {
     const body = await request.json();
+
     
     const { data, error } = await supabase
       .from('duas')

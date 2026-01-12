@@ -3,11 +3,15 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { Plus, Pencil, Trash2, BookOpen } from 'lucide-react';
+import Modal from '@/components/ui/Modal';
 import styles from '../list.module.css';
 
 export default function DuasListPage() {
   const [duas, setDuas] = useState([]);
   const [loading, setLoading] = useState(true);
+
+
+  const [deleteModal, setDeleteModal] = useState({ isOpen: false, id: null });
 
   useEffect(() => {
     fetchDuas();
@@ -15,7 +19,8 @@ export default function DuasListPage() {
 
   async function fetchDuas() {
     try {
-      const response = await fetch('/api/duas');
+      // Use ?admin=true to fetch all duas including drafts
+      const response = await fetch('/api/duas?admin=true');
       const data = await response.json();
       setDuas(data);
     } catch (error) {
@@ -25,8 +30,13 @@ export default function DuasListPage() {
     }
   }
 
-  async function handleDelete(id) {
-    if (!confirm('Are you sure you want to delete this dua?')) return;
+  function confirmDelete(id) {
+    setDeleteModal({ isOpen: true, id });
+  }
+
+  async function handleDelete() {
+    if (!deleteModal.id) return;
+    const id = deleteModal.id;
 
     try {
       const response = await fetch(`/api/duas/${id}`, { method: 'DELETE' });
@@ -35,6 +45,8 @@ export default function DuasListPage() {
       }
     } catch (error) {
       console.error('Failed to delete dua:', error);
+    } finally {
+      // Keep modal closed logic (handled by confirm button usually, but ensuring cleanup)
     }
   }
 
@@ -86,7 +98,7 @@ export default function DuasListPage() {
                   <Pencil size={16} />
                 </Link>
                 <button
-                  onClick={() => handleDelete(dua.id)}
+                  onClick={() => confirmDelete(dua.id)}
                   className={`${styles.actionBtn} ${styles.actionBtnDelete}`}
                 >
                   <Trash2 size={16} />
@@ -96,6 +108,17 @@ export default function DuasListPage() {
           ))
         )}
       </div>
+
+      
+      <Modal
+        isOpen={deleteModal.isOpen}
+        onClose={() => setDeleteModal({ isOpen: false, id: null })}
+        onConfirm={handleDelete}
+        title="Delete Dua"
+        message="Are you sure you want to delete this dua? This action cannot be undone."
+        confirmText="Delete"
+        isDanger={true}
+      />
     </div>
   );
 }

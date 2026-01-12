@@ -2,13 +2,21 @@ import { NextResponse } from 'next/server';
 import { supabase } from '@/lib/supabase';
 
 // Get all blogs
-export async function GET() {
+export async function GET(request) {
   try {
-    const { data, error } = await supabase
+    const { searchParams } = new URL(request.url);
+    const isAdmin = searchParams.get('admin') === 'true';
+
+    let query = supabase
       .from('blogs')
       .select('*, category:categories(id, name)')
-      .eq('is_published', true)
       .order('created_at', { ascending: false });
+
+    if (!isAdmin) {
+      query = query.eq('is_published', true);
+    }
+
+    const { data, error } = await query;
 
     if (error) throw error;
 

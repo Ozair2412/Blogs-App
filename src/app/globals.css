@@ -17,6 +17,10 @@
   --border-color: #e5e7eb;
   --border-light: #f3f4f6;
 
+  --danger: #ef4444;
+  --success: #22c55e;
+  --warning: #f59e0b;
+
   --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
   --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
   --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
@@ -45,6 +49,10 @@
 
   --border-color: #334155;
   --border-light: #1e293b;
+
+  --danger: #f87171;
+  --success: #4ade80;
+  --warning: #fbbf24;
 }
 
 /* ===== Reset & Base ===== */

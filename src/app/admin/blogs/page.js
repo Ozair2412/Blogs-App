@@ -5,11 +5,14 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Plus, Pencil, Trash2, FileText } from 'lucide-react';
 import { formatDate } from '@/lib/utils';
+import Modal from '@/components/ui/Modal';
 import styles from '../list.module.css';
 
 export default function BlogsListPage() {
   const [blogs, setBlogs] = useState([]);
   const [loading, setLoading] = useState(true);
+
+  const [deleteModal, setDeleteModal] = useState({ isOpen: false, id: null });
 
   useEffect(() => {
     fetchBlogs();
@@ -17,7 +20,7 @@ export default function BlogsListPage() {
 
   async function fetchBlogs() {
     try {
-      const response = await fetch('/api/blogs');
+      const response = await fetch('/api/blogs?admin=true');
       const data = await response.json();
       setBlogs(data);
     } catch (error) {
@@ -27,8 +30,13 @@ export default function BlogsListPage() {
     }
   }
 
-  async function handleDelete(id) {
-    if (!confirm('Are you sure you want to delete this blog?')) return;
+  function confirmDelete(id) {
+    setDeleteModal({ isOpen: true, id });
+  }
+
+  async function handleDelete() {
+    if (!deleteModal.id) return;
+    const id = deleteModal.id;
 
     try {
       const response = await fetch(`/api/blogs/${id}`, { method: 'DELETE' });
@@ -97,7 +105,7 @@ export default function BlogsListPage() {
                   <Pencil size={16} />
                 </Link>
                 <button
-                  onClick={() => handleDelete(blog.id)}
+                  onClick={() => confirmDelete(blog.id)}
                   className={`${styles.actionBtn} ${styles.actionBtnDelete}`}
                 >
                   <Trash2 size={16} />
@@ -107,6 +115,16 @@ export default function BlogsListPage() {
           ))
         )}
       </div>
+
+      <Modal
+        isOpen={deleteModal.isOpen}
+        onClose={() => setDeleteModal({ isOpen: false, id: null })}
+        onConfirm={handleDelete}
+        title="Delete Blog"
+        message="Are you sure you want to delete this blog post? This action cannot be undone."
+        confirmText="Delete"
+        isDanger={true}
+      />
     </div>
   );
 }

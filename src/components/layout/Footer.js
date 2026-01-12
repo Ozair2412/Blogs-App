@@ -18,6 +18,7 @@ export default function Footer() {
             <p className={styles.description}>
               Discover beautiful duas and insightful Islamic content to enrich your spiritual journey.
             </p>
+            
             <div className={styles.socialLinks}>
               <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className={styles.socialIcon}>
                 <Instagram size={20} />

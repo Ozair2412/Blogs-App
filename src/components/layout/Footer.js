@@ -46,6 +46,7 @@ export default function Footer() {
             
             </ul>
           </div>
+          
 
           {/* Column 3: Get in Touch (Removed Support, kept this) */}
           <div className={styles.contactCol}>
